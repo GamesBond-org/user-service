@@ -39,15 +39,15 @@ spec:
           runAsNonRoot: true
           runAsUser: 1001
           allowPrivilegeEscalation: false
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 4001
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 4001
-          initialDelaySeconds: 15
-          periodSeconds: 20
+        # readinessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 4001
+        #   initialDelaySeconds: 5
+        #   periodSeconds: 10
+        # livenessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 4001
+        #   initialDelaySeconds: 15
+        #   periodSeconds: 20
