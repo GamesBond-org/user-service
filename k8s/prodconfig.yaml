@@ -4,5 +4,5 @@ metadata:
   name: user-service-config
 data:
   PORT: "4001"
-  MONGO_URL: "mongodb://mongo-service:27017/user_db"
+  MONGO_URL: "mongodb://admin:password123@mongo-service:27017/user_db?authSource=admin"
   REDIS_URL: "redis://redis-service:6379"
