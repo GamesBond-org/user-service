@@ -1,9 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const session = require("express-session");
-const RedisStore = require("connect-redis").default;
-const { createClient } = require("redis");
 const { MongoClient, ObjectId } = require("mongodb");
 const bcrypt = require("bcryptjs");
 
@@ -14,18 +11,8 @@ const PORT = process.env.PORT || 4001;
 const mongoClient = new MongoClient(process.env.MONGO_URL || "mongodb://mongo:27017");
 let users, notifications;
 
-const redisClient = createClient({ url: process.env.REDIS_URL || "redis://redis:6379" });
-redisClient.connect().catch(console.error);
-
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
-app.use(session({
-  store: new RedisStore({ client: redisClient }),
-  secret: process.env.SESSION_SECRET || "change-me",
-  resave: false,
-  saveUninitialized: false,
-  cookie: { httpOnly: true, secure: false, maxAge: 1000 * 60 * 60 * 24 * 7 }
-}));
 
 const authRequired = (req, res, next) => {
   if (!req.session.userId) return res.status(401).json({ message: "Unauthorized" });
