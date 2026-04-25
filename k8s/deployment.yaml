@@ -43,11 +43,11 @@ spec:
           httpGet:
             path: /health
             port: 4001
-          initialDelaySeconds: 5
-          periodSeconds: 10
+          initialDelaySeconds: 40
+          periodSeconds: 20
         livenessProbe:
           httpGet:
             path: /health
             port: 4001
-          initialDelaySeconds: 15
-          periodSeconds: 20
+          initialDelaySeconds: 30
+          periodSeconds: 10
