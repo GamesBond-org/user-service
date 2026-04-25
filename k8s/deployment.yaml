@@ -25,7 +25,7 @@ spec:
         - containerPort: 4001
         envFrom:
         - configMapRef:
-            name: user-service-config
+            name: user-service-devconfig
         - secretRef:
             name: user-service-secret
         resources:
@@ -43,11 +43,11 @@ spec:
           httpGet:
             path: /health
             port: 4001
-          initialDelaySeconds: 40
-          periodSeconds: 20
+          initialDelaySeconds: 5
+          periodSeconds: 10
         livenessProbe:
           httpGet:
             path: /health
             port: 4001
-          initialDelaySeconds: 30
-          periodSeconds: 10
+          initialDelaySeconds: 15
+          periodSeconds: 20
